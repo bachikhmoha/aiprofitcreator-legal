@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connexion TikTok — AIProfitCreator</title>
+<style>
+  :root{ --bg:#f6f7fa; --surface:#ffffff; --border:#e3e6ee; --ink:#191c26; --ink-soft:#565c6d; --accent:#2b4fe0; --accent-soft:#eaeeff; }
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--ink); font-family:-apple-system,'IBM Plex Sans',sans-serif; margin:0; padding:24px 20px; line-height:1.6;}
+  main{max-width:480px; margin:40px auto;}
+  h1{font-size:1.3rem; margin:0 0 8px;}
+  p{color:var(--ink-soft); margin:0 0 20px;}
+  .box{background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px;}
+  .label{font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft); margin-bottom:6px;}
+  .code{font-family:'IBM Plex Mono', monospace; font-size:0.95rem; word-break:break-all; background:var(--accent-soft); border-radius:8px; padding:12px; margin-bottom:12px;}
+  button{appearance:none; border:none; background:var(--accent); color:#fff; font:inherit; font-weight:600; padding:10px 16px; border-radius:8px; cursor:pointer;}
+  .empty{color:var(--ink-soft); font-style:italic;}
+</style>
+</head>
+<body>
+<main>
+  <h1>Connexion TikTok</h1>
+  <p>Copie le code ci-dessous et renvoie-le pour terminer la connexion.</p>
+  <div class="box">
+    <div class="label">Code d'autorisation</div>
+    <div class="code" id="code">—</div>
+    <button id="copyBtn">Copier</button>
+  </div>
+</main>
+<script>
+  (function(){
+    var params = new URLSearchParams(window.location.search);
+    var code = params.get('code');
+    var error = params.get('error');
+    var el = document.getElementById('code');
+    var btn = document.getElementById('copyBtn');
+
+    if (code) {
+      el.textContent = code;
+    } else if (error) {
+      el.textContent = 'Erreur : ' + error + (params.get('error_description') ? ' — ' + params.get('error_description') : '');
+      el.classList.add('empty');
+      btn.hidden = true;
+    } else {
+      el.textContent = 'Aucun code trouvé dans l\'URL.';
+      el.classList.add('empty');
+      btn.hidden = true;
+    }
+
+    btn.addEventListener('click', function(){
+      navigator.clipboard.writeText(code).then(function(){
+        btn.textContent = 'Copié !';
+        setTimeout(function(){ btn.textContent = 'Copier'; }, 1500);
+      }).catch(function(){
+        var range = document.createRange();
+        range.selectNode(el);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+      });
+    });
+  })();
+</script>
+</body>
+</html>
