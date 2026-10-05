@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AIProfitCreator</title>
+<meta name="description" content="AIProfitCreator crée et publie des vidéos courtes de présentation de produits sur TikTok, avec un avatar IA clairement identifié.">
+<link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
 <link rel="apple-touch-icon" href="favicon-192.png">
@@ -17,38 +19,134 @@
     --accent:#2b4fe0; --accent-soft:#eaeeff;
   }
   *{box-sizing:border-box;}
-  body{background:var(--bg); color:var(--ink); font-family:'IBM Plex Sans',-apple-system,sans-serif; margin:0; padding:24px 20px; line-height:1.6;}
-  main{max-width:560px; margin:60px auto;}
-  .logo{width:56px; height:56px; border-radius:14px; margin-bottom:20px;}
-  h1{font-family:'Source Serif 4',serif; font-size:2rem; margin:0 0 8px;}
-  p.lead{color:var(--ink-soft); font-size:1.05rem; margin:0 0 32px;}
-  .box{background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px; margin-bottom:16px;}
-  .box h2{font-size:1rem; margin:0 0 8px;}
-  .box p{color:var(--ink-soft); margin:0 0 14px; font-size:0.95rem;}
-  a.link{color:var(--accent); text-decoration:none; font-weight:600;}
-  a.link:hover{text-decoration:underline;}
-  footer{margin-top:40px; color:var(--ink-faint); font-size:0.85rem;}
+  body{background:var(--bg); color:var(--ink); font-family:'IBM Plex Sans',-apple-system,sans-serif; margin:0; line-height:1.6;}
+  a{color:var(--accent);}
+  header.top{background:var(--surface); border-bottom:1px solid var(--border);}
+  .wrap{max-width:880px; margin:0 auto; padding:0 20px;}
+  .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; flex-wrap:wrap;}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:600; color:var(--ink); text-decoration:none;}
+  .brand img{width:32px; height:32px; border-radius:8px;}
+  .nav ul{list-style:none; display:flex; gap:18px; margin:0; padding:0; flex-wrap:wrap; font-size:0.92rem;}
+  .nav ul a{color:var(--ink-soft); text-decoration:none;}
+  .nav ul a:hover{color:var(--accent);}
+  .hero{padding:64px 0 40px;}
+  .hero .logo{width:72px; height:72px; border-radius:16px; margin-bottom:20px;}
+  h1{font-family:'Source Serif 4',serif; font-size:2.4rem; line-height:1.15; margin:0 0 14px;}
+  h2{font-family:'Source Serif 4',serif; font-size:1.6rem; margin:0 0 18px;}
+  .lead{color:var(--ink-soft); font-size:1.1rem; max-width:620px; margin:0 0 28px;}
+  .btn{display:inline-block; background:var(--accent); color:#fff; text-decoration:none; padding:11px 20px; border-radius:10px; font-weight:600;}
+  .btn.ghost{background:transparent; color:var(--accent); border:1px solid var(--accent); margin-left:8px;}
+  section{padding:40px 0; border-top:1px solid var(--border);}
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;}
+  .card{background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:22px;}
+  .card h3{font-size:1rem; margin:0 0 8px;}
+  .card p{color:var(--ink-soft); margin:0; font-size:0.95rem;}
+  .step{font-family:'IBM Plex Mono',monospace; color:var(--accent); background:var(--accent-soft); border-radius:6px; padding:2px 8px; font-size:0.8rem; display:inline-block; margin-bottom:10px;}
+  details{background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px 18px; margin-bottom:10px;}
+  summary{font-weight:600; cursor:pointer;}
+  details p{color:var(--ink-soft); margin:10px 0 0;}
+  footer{border-top:1px solid var(--border); padding:28px 0 40px; color:var(--ink-faint); font-size:0.88rem;}
+  footer .links{display:flex; gap:18px; flex-wrap:wrap; margin-bottom:8px;}
+  @media (max-width:520px){ h1{font-size:1.9rem;} .btn.ghost{margin:10px 0 0;} }
 </style>
 </head>
 <body>
-<main>
-  <img class="logo" src="favicon-192.png" alt="AIProfitCreator">
-  <h1>AIProfitCreator</h1>
-  <p class="lead">Contenu et recommandations de produits sur TikTok, assistés par IA.</p>
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="./"><img src="favicon-192.png" alt="">AIProfitCreator</a>
+    <ul>
+      <li><a href="#service">Le service</a></li>
+      <li><a href="#fonctionnement">Fonctionnement</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-  <div class="box">
-    <h2>Politique de confidentialité</h2>
-    <p>Comment les données sont collectées et utilisées.</p>
-    <a class="link" href="privacy.html">Lire la politique de confidentialité →</a>
+<main class="wrap">
+  <div class="hero">
+    <img class="logo" src="favicon-192.png" alt="Logo AIProfitCreator">
+    <h1>Des vidéos produits courtes, présentées par une créatrice IA.</h1>
+    <p class="lead">AIProfitCreator conçoit et publie des vidéos de présentation de produits sur le compte TikTok <strong>@aiprofitcreator</strong>. Chaque vidéo est générée avec une créatrice virtuelle et identifiée comme contenu généré par IA.</p>
+    <a class="btn" href="https://www.tiktok.com/@aiprofitcreator" rel="noopener">Voir le compte TikTok</a>
+    <a class="btn ghost" href="#contact">Nous contacter</a>
   </div>
 
-  <div class="box">
-    <h2>Conditions d'utilisation</h2>
-    <p>Les règles d'utilisation de ce compte et de ses services.</p>
-    <a class="link" href="terms.html">Lire les conditions d'utilisation →</a>
-  </div>
+  <section id="service">
+    <h2>Le service</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Sélection de produits</h3>
+        <p>Nous choisissons des produits utiles du quotidien, disponibles sur TikTok Shop, et rédigeons une présentation claire et honnête.</p>
+      </div>
+      <div class="card">
+        <h3>Créatrice virtuelle</h3>
+        <p>Une créatrice IA, toujours la même, présente chaque produit face caméra. Le contenu est étiqueté « généré par IA » conformément aux règles TikTok.</p>
+      </div>
+      <div class="card">
+        <h3>Publication automatisée</h3>
+        <p>Les vidéos sont publiées sur notre propre compte via l'API officielle TikTok (Content Posting API), après autorisation explicite du titulaire du compte.</p>
+      </div>
+    </div>
+  </section>
 
-  <footer>AIProfitCreator — contact disponible via TikTok.</footer>
+  <section id="fonctionnement">
+    <h2>Fonctionnement</h2>
+    <div class="grid">
+      <div class="card">
+        <span class="step">01</span>
+        <h3>Script</h3>
+        <p>Un court script est rédigé pour le produit : à quoi il sert, pour qui, ses points forts.</p>
+      </div>
+      <div class="card">
+        <span class="step">02</span>
+        <h3>Génération vidéo</h3>
+        <p>La vidéo verticale est générée à partir de l'image de référence de notre créatrice IA.</p>
+      </div>
+      <div class="card">
+        <span class="step">03</span>
+        <h3>Vérification</h3>
+        <p>Chaque vidéo est relue avant publication : exactitude des informations, respect des règles communautaires.</p>
+      </div>
+      <div class="card">
+        <span class="step">04</span>
+        <h3>Publication</h3>
+        <p>La vidéo est envoyée sur TikTok via l'API officielle, avec l'étiquette de contenu généré par IA.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Questions fréquentes</h2>
+    <details>
+      <summary>Quelles données de mon compte TikTok utilisez-vous ?</summary>
+      <p>L'application n'est utilisée que sur notre propre compte @aiprofitcreator. Elle accède uniquement aux informations de profil de base et à la publication de vidéos. Le détail figure dans la <a href="privacy.html">politique de confidentialité</a>.</p>
+    </details>
+    <details>
+      <summary>La créatrice est-elle une vraie personne ?</summary>
+      <p>Non. Il s'agit d'un avatar généré par IA. Toutes nos vidéos sont étiquetées comme contenu généré par IA.</p>
+    </details>
+    <details>
+      <summary>Puis-je acheter les produits présentés ?</summary>
+      <p>Les produits sont vendus par leurs vendeurs respectifs via TikTok Shop. AIProfitCreator ne vend rien directement et ne traite aucun paiement.</p>
+    </details>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Pour toute question, demande de suppression de données ou partenariat : <a href="mailto:buymygadget28@gmail.com">buymygadget28@gmail.com</a></p>
+  </section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="privacy.html">Politique de confidentialité</a>
+      <a href="terms.html">Conditions d'utilisation</a>
+      <a href="https://www.tiktok.com/@aiprofitcreator" rel="noopener">TikTok @aiprofitcreator</a>
+    </div>
+    © 2026 AIProfitCreator — BM SERVICE
+  </div>
+</footer>
 </body>
 </html>
